@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> To-Do List (FastAPI + HTMX)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1> Building an Interactive To-Do List with FastAPI and HTMX</h1>
+    </header>
+
+    <section id="introduction">
+        <p> 
+            Lavanya Gupta - 24110184 <br>
+            Shailja Paliwal - 24110328 <br>
+            Wani Shreya Jagesh - 24110396 <br>
+        </p>
+        <p>
+           In modern web development, creating lightweight, interactive applications with minimal JavaScript has become a sought-after approach. FastAPI, a high-performance web framework for Python, is well-suited for building efficient backend systems, while HTMX offers a simple way to introduce frontend interactivity without relying on heavy JavaScript frameworks like React or Vue. <br>
+           This article will walk you through building an interactive To-Do List application using FastAPI for the backend and HTMX for the frontend. The application will allow users to add, complete, and delete tasks dynamically, without requiring full-page reloads. <br>
+           By leveraging HTMX, we can achieve a smooth user experience with minimal frontend complexity.
+        </p>
+    </section>
+
+    <section id="installation">
+        <h2> INSTALLATION</h2>
+        <img src="D:\Shailja Paliwal\exposition__assignment\Installation.png" alt="Installation">
+        <h3> SETUP</h3>
+        <img src="D:\Shailja Paliwal\exposition__assignment\SetUp.png" alt="SetUp">
+        <pre>
+            <code>
+# Install dependencies
+pip install fastapi uvicorn
+
+# Run the FastAPI server
+uvicorn main:app --reload
+            </code>
+        </pre>
+    </section>
+
+    <section id="features">
+        <h2> KEY FEATURES & EXPLANATION</h2>
+        <ul>
+           <p>
+            <b>1. Dynamic Task Management </b><br>
+            Users can add, complete, and delete tasks dynamically without needing a full-page reload. This enhances user experience by making interactions smoother and faster. <br>
+            <b>2. No Full-Page Reloads</b> <br>
+            HTMX enables partial page updates, meaning only the required elementson the page change instead of reloading the entire document. This is achieved through HTML attributes instead of JavaScript functions. <br>
+            <b>3. Persistent Storage</b> <br>
+            We used SQLite with SQLAlchemy to ensure that tasks remain available even after refreshing the page or restarting the server. <br>
+            <b>4. Minimal Frontend Code</b> <br>
+            Instead of writing extensive JavaScript for interactivity, HTMX allows us to send simple HTTP requests and dynamically update parts of the page. This results in cleaner, maintainable code. <br>
+            <b>5. Server-Rendered HTML Updates</b> <br>
+            The backend sends back HTML fragments rather than JSON responses. These HTML fragments are then inserted into the DOM by HTMX, reducing the need for additional frontend logic.
+           </p> 
+
+        </ul>
+    </section>
+
+    <section id="code-examples">
+        <h2>CODE EXAMPLES</h2>
+        <h3>Database to store tasks</h3>
+        <img src="D:\Shailja Paliwal\exposition__assignment\Database.png" alt="Database">
+        <h3>Backend (FastAPI)</h3>
+        <pre>
+            <code>
+from fastapi import FastAPI
+app = FastAPI()
+
+tasks = []
+
+@app.get("/tasks")
+def get_tasks():
+    return tasks
+            </code>
+        </pre>
+        <img src="D:\Shailja Paliwal\exposition__assignment\Backend.png" alt="Backend">
+        <h3>Frontend (HTMX)</h3>
+        <pre>
+            <code>
+&lt;button hx-get="/tasks" hx-target="#task-list"&gt;Load Tasks&lt;/button&gt;
+&lt;div id="task-list"&gt;&lt;/div&gt;               
+            </code>
+        </pre>
+        <img src="D:\Shailja Paliwal\exposition__assignment\Frontend1.png" alt="Frontend1">
+        <img src="D:\Shailja Paliwal\exposition__assignment\Frontend2.png" alt="Frontend2">
+    </section>
+
+    <section id="screenshots">
+        <h2>SCREENSHOTS</h2>
+        <h3>Adding Task</h3>
+        <img src="D:\Shailja Paliwal\exposition__assignment\AddTask.png" alt="AddTask1">
+        <img src="D:\Shailja Paliwal\exposition__assignment\AddTask2.png" alt="AddTask2">
+        <h3>Completing a Task</h3>
+        <img src="D:\Shailja Paliwal\exposition__assignment\CompletedTask.png" alt="CompletedTask">
+        <h3>Deleting a Task</h3>
+        <img src="D:\Shailja Paliwal\exposition__assignment\DeletedTask.png" alt="DeletedTask">
+    </section>
+
+    <section id="use-cases">
+        <h2>CASES</h2>
+        <ul>
+            <p>
+                <b>1. Personal Productivity</b><br>
+                Manage daily tasks efficiently with a simple to-do list that can be accessed from any device. <br>
+                <b>2. Office Task Management</b><br>
+                Employees can maintain task lists for ongoing projects, ensuring better workflow and team coordination.<br>
+                <b>3. Shopping Lists</b><br>
+                Create and manage shopping lists dynamically without needing to reload the page.<br>
+                <b>4. Student Assignments tracker</b><br>
+                Students can track their assignments, mark completed ones, and stay on top of deadlines.<br>
+                <b>5. Minimalist CRUD Apps</b><br>
+                Use this approach as a lightweight alternative to complex JavaScript-driven CRUD applications.
+            </p>
+        </ul>
+    </section>
+
+    <section id="conclusion">
+        <h2>CONCLUSION</h2>
+        <p>This FastAPI + HTMX To-Do List demonstrates how backend-driven interactivity can simplify frontend developement. Unlike traditional JavaScript-heavy frameworks, HTMX leverages the power of HTML and HTTP to create highly interactive applications without excessive Javascript.</p>
+    </section>
+
+    <section id="references">
+        <h2>REFERENCES & FURTHER READING</h2>
+        <ul>
+            <li><a href="https://fastapi.tiangolo.com/tutorial/">FastAPI Documentation</a></li>
+            <li><a href="https://htmx.org/docs/">HTMX Documentation</a></li>
+            <li><a href="https://docs.sqlalchemy.org/en/20/orm/">SQLAlchemy ORM</a></li>
+            <li><a href="https://www.uvicorn.org/">Uvicorn ASGI Server</a></li>
+        </ul>
+    </section>
+</body>
+</html>
